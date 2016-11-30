@@ -8,3 +8,4 @@ from pyfiglet import figlet_format
 def logo():
     cprint(figlet_format('Dodo Quest!', font='speed'),
            'yellow',  attrs=['bold'])
+    print "by Tom Kelly"

@@ -1,5 +1,6 @@
 import os
 from graphics import logo
+from audio import beep1,march
 
 os.system("cls"), logo()
 
@@ -264,7 +265,8 @@ def lazy():
 
 def start():
     os.system("cls"), logo()
-    print"\n"
+    beep1()
+    print"\n\n\n"
     print "You are chilling out at home, laying on your bed.\n"
     print "The Bravo Network is on TV.\n"
     print "You're husband, Tom, is next to you on the bed programming on " \
@@ -273,6 +275,7 @@ def start():
     print "The fourth puppy, Dodo, is missing!\n"
     print "Do you want to get up and find her? \n\n"
     print "(y/n)\n\n"
+    march()
     choice = raw_input("> ")
 
     if choice == "y":
