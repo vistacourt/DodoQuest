@@ -46,16 +46,17 @@ def porch():
     print "You can open the door to the family room or go to the " \
           "front yard and admire Bob's door some more\n"
     print "Choice?\n\n"
-    print "(door/yard)\n\n"
+    print "(family/front)\n\n"
     choice = raw_input("> ")
 
-    if choice == "door":
+    if choice == "family":
+
         family_room()
-    elif choice == "yard":
+    elif choice == "front":
         front_yard()
     else:
         print "\n"
-        print "Please choose one of these: (left: laundry room / right: family room)\n"
+        print "Please choose one of these: (family/front)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
@@ -69,7 +70,7 @@ def patio():
     print "But that's another story.\n"
     print "There is poop on the ground from Jet.\n"
     print "beep beep click click beep beep.\n"
-    print "You can go to the front yard from here or go back to the laundry room.\n\n"
+    print "You can go to the front yard from here or go to the laundry room.\n\n"
     print "(front/laundry)\n\n"
     choice = raw_input("> ")
 
@@ -112,7 +113,7 @@ def laundry_room():
     else:
         print "\n"
         print "It's simple\n"
-        print "Either go outside to the covered patio or back to the kitchen\n"
+        print "Either go outside to the covered patio or to the kitchen\n"
         print "Try again (patio/kitchen)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
@@ -134,20 +135,20 @@ def kitchen():
     os.system("cls"), logo()
     print "\n"
     print "The kitchen is kinda small but it's got everything you need.\n"
-    print "From here you can see the laundry room and the front door in the family room to the right.\n"
+    print "From here you can see the laundry room and the family room to the right.\n"
     print "Enter the laundry room, front door in the family room or the hallway.\n\n"
-    print "(laundry/door/hallway)\n\n"
+    print "(laundry/family/hallway)\n\n"
     choice = raw_input("> ")
 
     if choice == "laundry":
         laundry_room()
-    elif choice == "door":
+    elif choice == "family":
         family_room()
     elif choice == "hallway":
         hallway()
     else:
         print "\n"
-        print "Please choose one of these: (laundry/door/hallway)\n"
+        print "Please choose one of these: (laundry/family/hallway)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
@@ -160,11 +161,11 @@ def front_yard():
     print "You can see your house and you like it.\n"
     print "Lot's of choices here.\n"
     print "You can exit to the street through the gate.\n"
-    print "You can cross the lawn to the side gate and enter the covered patio.\n"
+    print "You can go through the side gate and enter the covered patio.\n"
     print "You can walk to the front porch.\n"
-    print "Or you could just go back to the side of the house.\n"
+    print "Or you can go to the side of the house.\n"
     print "Your thoughts? \n\n"
-    print "(street/patio/porch/window)\n\n"
+    print "(street/patio/porch/side)\n\n"
     choice = raw_input("> ")
 
     if choice == "street":
@@ -173,11 +174,11 @@ def front_yard():
         patio()
     elif choice == "porch":
         porch()
-    elif choice == "window":
+    elif choice == "side":
         side_house()
     else:
         print "\n"
-        print "Please choose one of these: (street/patio/porch/window)\n"
+        print "Please choose one of these: (street/patio/porch/side)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
@@ -202,7 +203,7 @@ def  hallway():
         bedroom()
     else:
         print"\n"
-        print "Choose one of these three (kitchen/bathroom/back)\n"
+        print "Choose one of these three (kitchen/bathroom/back/bedroom)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
@@ -213,18 +214,18 @@ def side_house():
     print "\n"
     print "You are outside on the side of the house.\n"
     print "there is an air conditioning unit and an old meat smoker here.\n"
-    print "You can walk around the hedges to the front yard or go back in the window that Tess fixed once.\n"
+    print "You can walk around the hedges to the front yard or go through the bedroom window that Tess fixed.\n"
     print "Which way? \n\n"
-    print "(front/window)\n\n"
+    print "(front/bedroom)\n\n"
     choice = raw_input("> ")
 
     if choice == "front":
         front_yard()
-    elif choice == "window":
+    elif choice == "bedroom":
         bedroom()
     else:
         print "\n"
-        print "Please choose one of these: (front/window)\n"
+        print "Please choose one of these: (front/bedroom)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
@@ -234,19 +235,19 @@ def bedroom():
     os.system("cls"), logo()
     print "\n"
     print "You are in your bedroom.\n"
-    print "There is a door on the right.\n"
-    print "There is a window on the left.\n"
+    print "There is a door to the hallway.\n"
+    print "There is a window that leads to the side of the house.\n"
     print "which way? \n\n"
-    print "(door/window)\n\n"
+    print "(hallway/side)\n\n"
     choice = raw_input("> ")
 
-    if choice == "door":
+    if choice == "hallway":
         hallway()
-    elif choice == "window":
+    elif choice == "side":
         side_house()
     else:
         print "\n"
-        print "What don't you understand about (door/window)?\n"
+        print "What don't you understand about (hallway/side)?\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
