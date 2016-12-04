@@ -4,6 +4,23 @@ from audio import beep1,march
 
 os.system("cls"), logo()
 
+items = {'poop': ['poop', 1], 'piss': ['piss', 2], 'snack': ['poopy snack', 10]}
+inv = []
+
+def inventory_add(name):
+    try:
+        inv.append(items[name])
+    except:
+        print "Try again"
+    total = 0
+    print "you picked up the", name
+    print "\nInventory:\n"
+    for name,value in inv:
+        total = total + int(value)
+        print "%s\n" % name
+    print "Score :\n", total
+    print raw_input("Press Enter to continue.")
+
 def family_room():
     os.system("cls"), logo()
     print "\n"
@@ -114,7 +131,7 @@ def laundry_room():
     else:
         print "\n"
         print "It's simple\n"
-        print "Either go outside to the covered patio or to the kitchen\n"
+        print "Either go outside to the covered patio or go to the kitchen\n"
         print "Try again (patio/kitchen)\n"
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
@@ -126,11 +143,23 @@ def bathroom():
     print "\n"
     print "Yup, it's a bathroom.\n"
     print "There is piss on the ground from Jack.\n"
-    print "You can stop here and rest or go back to the hallway.\n"
-    print "Press enter when you are ready.\n\n"
-    print "(Enter)\n\n"
-    raw_input("> ")
-    hallway()
+    print "You can clean the piss or go back to the hallway.\n"
+    print "(piss/hallway)\n\n"
+    choice = raw_input("> ")
+
+    if choice == "piss":
+        inventory_add(choice)
+        hallway()
+    elif choice == "hallway":
+        hallway()
+    else:
+        print "\n"
+        print "Either wipe up Jack's piss or go to the kitchen\n"
+        print "Try again (piss/hallway)\n"
+        print "Press enter when you are ready.\n\n"
+        print "(Enter)\n\n"
+        raw_input("> ")
+        bathroom()
 
 def kitchen():
     os.system("cls"), logo()
