@@ -4,25 +4,34 @@ from audio import beep1,march
 
 os.system("cls"), logo()
 
-items = {'poop': ['poop', 1], 'piss': ['piss', 2], 'snack': ['poopy snack', 10]}
+items = {'poop': ['poop', 1], 'piss': ['piss', 2], 'puke': ['puke', 5], 'snack': ['poopy snack', 10]}
 inv = []
+
+
+def status():
+    total = 0
+
+    print "\nInventory:"
+    print "-" * 10
+    for name,value in inv:
+        total = total + int(value)
+
+        print "%s" % name
+
+    print "\nScore :", total
+    print "-" * 10
 
 def inventory_add(name):
     try:
         inv.append(items[name])
     except:
         print "Try again"
-    total = 0
-    print "you picked up the", name
-    print "\nInventory:\n"
-    for name,value in inv:
-        total = total + int(value)
-        print "%s\n" % name
-    print "Score :\n", total
-    print raw_input("Press Enter to continue.")
+    print "\nYou picked up the", name
+
+
 
 def family_room():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "You are in the family room.\n"
     print "There is a piano, a fireplace, table, couch and TV.\n"
@@ -46,7 +55,7 @@ def family_room():
         family_room()
 
 def back_room():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "This is where homeless items from around the house goes.\n"
     print "This house is 'homeless item friendly'.\n"
@@ -57,7 +66,7 @@ def back_room():
     hallway()
 
 def porch():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "The porch is the best place to view Robert Ettleman's front door.\n"
     print "It's been reported that the door was in fact, stolen from him.\n"
@@ -81,7 +90,7 @@ def porch():
         porch()
 
 def patio():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "The covered patio is filled with awesome computers and electronics.\n"
     print "It's where the great computer scientist, Tom Kelly, creates greatness.\n"
@@ -105,7 +114,7 @@ def patio():
         patio()
 
 def street():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "LOOK OUT! \n"
     print "There is Peter Carlson and Coral Weston!\n"
@@ -116,15 +125,23 @@ def street():
     front_yard()
 
 def laundry_room():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "This laundry room is filled with clothes and laundry items.\n"
-    print "There is piss on the floor from Jack.\n"
-    print "You can see the covered patio outside and the kitchen is behind you.\n\n"
-    print "(patio/kitchen)?\n\n"
-    choice = raw_input("> ")
+    if ["puke",5] not in inv:
+        print "There is puke on the floor from Jack.\n"
+        print "You can clean the puke or go to the covered patio outside or the kitchen.\n\n"
+        print "(puke/patio/kitchen)?\n\n"
+        choice = raw_input("> ")
+    else:
+        print "You have cleaned the puke from the floor.\n\n"
+        print "You can go to the covered patio outside or the kitchen.\n\n"
+        print "(patio/kitchen)?\n\n"
+        choice = raw_input("> ")
 
-    if choice == "patio":
+    if choice == "puke" and ["puke",5] not in inv:
+        inventory_add(choice)
+    elif choice == "patio":
         patio()
     elif choice == "kitchen":
         kitchen()
@@ -136,20 +153,26 @@ def laundry_room():
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
-        laundry_room()
+    laundry_room()
 
 def bathroom():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "Yup, it's a bathroom.\n"
-    print "There is piss on the ground from Jack.\n"
-    print "You can clean the piss or go back to the hallway.\n"
-    print "(piss/hallway)\n\n"
-    choice = raw_input("> ")
-
-    if choice == "piss":
-        inventory_add(choice)
+    # print inv
+    if ["piss",2] not in inv:
+        print "There is piss on the ground from Jack.\n"
+        print "You can clean the piss or go back to the hallway.\n"
+        print "(piss/hallway)\n\n"
+        choice = raw_input("> ")
+    else:
+        print "At least there is no more piss on the floor.\n\n"
+        print "Press Enter to go to the hallway.\n\n"
+        raw_input("> ")
         hallway()
+
+    if choice == "piss" and ["piss",2] not in inv:
+        inventory_add(choice)
     elif choice == "hallway":
         hallway()
     else:
@@ -159,10 +182,10 @@ def bathroom():
         print "Press enter when you are ready.\n\n"
         print "(Enter)\n\n"
         raw_input("> ")
-        bathroom()
+    bathroom()
 
 def kitchen():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "The kitchen is kinda small but it's got everything you need.\n"
     print "From here you can see the laundry room and the family room to the right.\n"
@@ -185,7 +208,7 @@ def kitchen():
         kitchen()
 
 def front_yard():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "The front yard looks nice, Manny always keeps the lawn cut.\n"
     print "You can see your house and you like it.\n"
@@ -215,7 +238,7 @@ def front_yard():
         front_yard()
 
 def  hallway():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "You are in a small hallway.\n"
     print "You can go to the kitchen, bathroom, bedroom or back room from here.\n"
@@ -240,7 +263,7 @@ def  hallway():
         hallway()
 
 def side_house():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "You are outside on the side of the house.\n"
     print "there is an air conditioning unit and an old meat smoker here.\n"
@@ -262,7 +285,7 @@ def side_house():
         side_house()
 
 def bedroom():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "You are in your bedroom.\n"
     print "There is a door to the hallway.\n"
@@ -284,7 +307,7 @@ def bedroom():
         bedroom()
 
 def lazy():
-    os.system("cls"), logo()
+    os.system("cls"), logo(), status()
     print "\n"
     print "Yeah, getting up would take too much energy.\n"
     print "Press enter when you are ready.\n\n"
@@ -293,8 +316,7 @@ def lazy():
     start()
 
 def start():
-    os.system("cls"), logo()
-    beep1()
+    os.system("cls"), logo(), beep1(), status()
     print"\n\n\n"
     print "You are chilling out at home, laying on your bed.\n"
     print "The Bravo Network is on TV.\n"
